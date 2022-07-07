@@ -4,7 +4,7 @@ import prepare from "./util/prepare";
 
 declare const config: { version: string, commitHash: string, commitCount: number, buildDate: string };
 
-export default function ({port} = {port: 3005}) {
+export default function ({port} = {port: 80}) {
     return new Promise<void>((resolve) => {
         const app = express();
 

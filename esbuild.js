@@ -4,7 +4,7 @@ const packageJson = require('./package.json');
 const makeAllPackagesExternalPlugin = {
     name: 'make-all-packages-external',
     setup(build) {
-        build.onResolve({filter: /\$[A-Za-z]+/}, args => ({external: false}))
+        build.onResolve({filter: /\$[A-Za-z]+/}, () => ({external: false}))
         build.onResolve({filter: /^[^.\/]|^\.[^.\/]|^\.\.[^\/]/}, args => ({path: args.path, external: true}))
     },
 }
@@ -22,6 +22,7 @@ require('esbuild').build({
         'config.commitHash': `"${childProcess.execSync('git rev-parse HEAD').toString().trim()}"`,
         'config.commitCount': `${childProcess.execSync('git rev-list --count HEAD').toString().trim()}`,
         'config.buildDate': `"${new Date().toISOString()}"`,
+        'config.port': '3005'
     },
     watch: {
         onRebuild(error) {

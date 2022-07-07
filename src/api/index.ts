@@ -5,6 +5,7 @@ import account from "./account";
 import contest from "./contest";
 import problemSet from "./problemSet";
 import ranking from "./ranking";
+import status from "./status";
 
 export default function () {
     const router = express.Router();
@@ -15,6 +16,7 @@ export default function () {
     router.use("/problemSet", problemSet());
     router.use("/ranking", ranking());
     router.use("/submission", submission());
+    router.use("/status", status());
 
     return router;
 }

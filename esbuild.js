@@ -19,11 +19,11 @@ require('esbuild').build({
     define: {
         'config.version': `"${packageJson.version}"`,
         'config.commitHash': `"${childProcess.execSync('git rev-parse HEAD').toString().trim()}"`,
-        'config.commitCount': `${childProcess.execSync('git rev-list --count').toString().trim()}`,
+        'config.commitCount': `${childProcess.execSync('git rev-list --count HEAD').toString().trim()}`,
         'config.buildDate': `"${new Date().toISOString()}"`,
     },
     watch: {
-        onRebuild(error, result) {
+        onRebuild(error) {
             if (error) console.error('⚠ watch build failed:', error)
             else {
                 for (let i = 0; i < process.stdout.rows; i++) console.log('');
@@ -35,7 +35,7 @@ require('esbuild').build({
             }
         },
     },
-}).then(result => {
+}).then(() => {
     for (let i = 0; i < process.stdout.rows; i++) console.log('');
     process.stdout.cursorTo(0, 0);
     console.log('⚡ Starting server...')

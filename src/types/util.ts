@@ -20,3 +20,8 @@ export type Reason =
     | 'RE'
     | 'PD'
     | 'CE'
+
+export interface SourceFile {
+    name: string
+    source: string
+}

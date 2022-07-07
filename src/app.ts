@@ -4,7 +4,7 @@ import prepare from "./util/prepare";
 
 declare const config: { version: string, commitHash: string, commitCount: number, buildDate: string };
 
-export default function () {
+export default function ({port} = {port: 3005}) {
     return new Promise<void>((resolve) => {
         const app = express();
 
@@ -20,6 +20,6 @@ export default function () {
             res.status(404).send('Not Found');
         })
 
-        return app.listen(3000, resolve);
+        return app.listen(port, resolve);
     })
 }

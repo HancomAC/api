@@ -1,5 +1,5 @@
 import express from 'express';
-import endpoint from "./endpoint";
+import api from "./api";
 import prepare from "./util/prepare";
 
 declare const config: { version: string, commitHash: string, commitCount: number, buildDate: string };
@@ -10,7 +10,7 @@ export default function () {
 
         prepare(app);
 
-        app.use('/', endpoint());
+        app.use('/', api());
 
         app.get('/', (req, res) => {
             res.send(`Jungol API Backend v${config.version}.${config.commitCount} (${config.commitHash})`);

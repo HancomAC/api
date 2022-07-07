@@ -20,9 +20,12 @@ export default function () {
     router.get("/", handler(async (req) => {
         const limit = parseInt(req.query.limit as string || '20') || 20;
         const cursor = req.query.cursor as string;
+
         const problemId = parseInt(req.query.problemId as string);
-        const data = await list({limit, cursor, problemId});
-        return data;
+        const contestId = parseInt(req.query.contestId as string);
+        const account = req.query.account as string;
+
+        return await list({limit, cursor, problemId, contestId, account});
     }))
 
     return router;

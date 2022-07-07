@@ -2,10 +2,12 @@ import Datastore, {DSKey} from "../../gcp/datastore";
 import Resp from "../../types/response";
 import {Submission} from "../../types/submission";
 
-export default async function ({limit, cursor, problemId} = {
+export default async function ({limit, cursor, problemId, contestId, account} = {
     cursor: '',
-    problemId: null,
     limit: 20,
+    problemId: null,
+    contestId: null,
+    account: null,
 }): Resp<{ data: Submission[], cursor?: DSKey }> {
     if (limit > 20) {
         return {
@@ -19,6 +21,8 @@ export default async function ({limit, cursor, problemId} = {
     if (cursor) query.start(cursor)
     query.order('submissionId', {descending: true})
     if (problemId) query.filter('problemId', problemId)
+    if (contestId) query.filter('contestId', contestId)
+    if (account) query.filter('account', account)
     query.limit(limit)
 
     const raw = await query.run()

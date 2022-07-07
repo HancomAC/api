@@ -4,9 +4,9 @@ import {cpus} from "os";
 import app from "./app";
 import log, {error} from "./util/log";
 
-declare const config: { version: string, commitHash: string, commitCount: number, buildDate: string, port: number };
+declare const config: { version: string, commitHash: string, commitCount: number, buildDate: string, port: number, dev: boolean };
 
-const numCPUs = cpus().length;
+const numCPUs = config.dev ? 2 : cpus().length;
 const port = config.port;
 
 if (cluster.isPrimary) {

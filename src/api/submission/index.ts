@@ -10,10 +10,13 @@ export default function () {
     });
 
     router.get("/", async (req, res) => {
+        const limit = parseInt(req.query.limit as string || '20') || 20;
         const cursor = req.query.cursor as string;
-        const data = await list({cursor});
+        const problemId = parseInt(req.query.problemId as string);
+        const data = await list({limit, cursor, problemId});
         res.send(data)
     })
 
     return router;
 }
+

@@ -7,7 +7,7 @@ type ResponseSuccess<T> = {
 
 type ResponseError<T> = {
     error: string
-    data: null
+    data?: null
 }
 
 export default Resp;

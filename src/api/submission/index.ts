@@ -14,9 +14,7 @@ export default function () {
                 code: 400
             };
         }
-        return {
-            data: await get(submissionId)
-        }
+        return await get(submissionId)
     }));
 
     router.get("/", handler(async (req) => {

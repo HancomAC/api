@@ -1,13 +1,13 @@
 type Resp<T> = Promise<ResponseSuccess<T> | ResponseError<T>>;
 
-type ResponseSuccess<T> = {
+export type ResponseSuccess<T> = {
     data: T
 }
 
-type ResponseError<T> = {
+export type ResponseError<T> = {
     error: string
     code: number
-    data?: null
+    data?: T
 }
 
 export default Resp;

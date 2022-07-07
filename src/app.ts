@@ -16,14 +16,6 @@ export default function ({port} = {port: 3005}) {
             res.send(`Jungol API Backend v${config.version}.${config.commitCount} (${config.commitHash})`);
         })
 
-        app.use((req, res) => {
-            if (!res.locals.response) res.status(404).send('Not Found');
-            else {
-                if (res.locals.response.error) res.status(500).send(res.locals.response.error);
-                else res.send(res.locals.response);
-            }
-        })
-
         return app.listen(port, resolve);
     })
 }

@@ -1,6 +1,6 @@
-import Storage, {SubmissionBucket} from "../../gcp/storage";
-import Resp from "../../types/response";
-import {SubmissionRecord} from "../../types/submission";
+import Storage, {SubmissionBucket} from "$gcp/storage";
+import Resp from "$types/response";
+import {SubmissionRecord} from "$types/submission";
 
 export default async function (submissionId: number): Resp<SubmissionRecord> {
     try {

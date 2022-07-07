@@ -1,4 +1,4 @@
-import {Language, Reason, SourceFile, Time} from "./util";
+import {Language, Reason, SourceFile, Time} from "$types/util";
 
 interface Additional {
     account?: string

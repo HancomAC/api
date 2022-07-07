@@ -4,6 +4,18 @@
     "target": "es6",
     "sourceMap": true,
     "esModuleInterop": true,
+    "baseUrl": "./src",
+    "paths": {
+      "$util/*": [
+        "util/*"
+      ],
+      "$types/*": [
+        "types/*"
+      ],
+      "$gcp/*": [
+        "gcp/*"
+      ]
+    }
   },
   "exclude": [
     "node_modules"

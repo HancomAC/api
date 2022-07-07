@@ -1,6 +1,6 @@
-import Datastore, {DSKey} from "../../gcp/datastore";
-import Resp from "../../types/response";
-import {Submission} from "../../types/submission";
+import Datastore, {DSKey} from "$gcp/datastore";
+import Resp from "$types/response";
+import {Submission} from "$types/submission";
 
 export default async function ({limit, cursor, problemId, contestId, account} = {
     cursor: '',

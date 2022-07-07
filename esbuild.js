@@ -4,8 +4,8 @@ const packageJson = require('./package.json');
 const makeAllPackagesExternalPlugin = {
     name: 'make-all-packages-external',
     setup(build) {
-        let filter = /^[^.\/]|^\.[^.\/]|^\.\.[^\/]/ // Must not start with "/" or "./" or "../"
-        build.onResolve({filter}, args => ({path: args.path, external: true}))
+        build.onResolve({filter: /\$[A-Za-z]+/}, args => ({external: false}))
+        build.onResolve({filter: /^[^.\/]|^\.[^.\/]|^\.\.[^\/]/}, args => ({path: args.path, external: true}))
     },
 }
 
@@ -16,6 +16,7 @@ require('esbuild').build({
     outfile: 'build/index.js',
     bundle: true,
     plugins: [makeAllPackagesExternalPlugin],
+    platform: 'node',
     define: {
         'config.version': `"${packageJson.version}"`,
         'config.commitHash': `"${childProcess.execSync('git rev-parse HEAD').toString().trim()}"`,

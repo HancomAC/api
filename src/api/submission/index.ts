@@ -1,6 +1,6 @@
 import express from "express";
+import handler from "$util/handler";
 import list from "./list";
-import handler from "../../util/handler";
 import get from "./get";
 
 export default function () {

@@ -17,7 +17,11 @@ export default function ({port} = {port: 3005}) {
         })
 
         app.use((req, res) => {
-            res.status(404).send('Not Found');
+            if (!res.locals.response) res.status(404).send('Not Found');
+            else {
+                if (res.locals.response.error) res.status(500).send(res.locals.response.error);
+                else res.send(res.locals.response);
+            }
         })
 
         return app.listen(port, resolve);

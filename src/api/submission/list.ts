@@ -9,7 +9,8 @@ export default async function ({limit, cursor, problemId} = {
 }): Resp<{ data: Submission[], cursor?: DSKey }> {
     if (limit > 20) {
         return {
-            error: 'limit is too large'
+            error: 'limit is too large',
+            code: 400
         }
     }
 

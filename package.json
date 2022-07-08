@@ -8,8 +8,14 @@
   "private": true,
   "scripts": {
     "dev": "node esbuild.js --dev",
-    "build": "node esbuild.js",
-    "start": "node build/index.js"
+    "build": "npm run build:ts npm run build:docker",
+    "build:ts": "node esbuild.js",
+    "build:docker": "docker build -t asia.gcr.io/hancomac/api .",
+    "prestart": "npm run build",
+    "start": "node build/index.js",
+    "predeploy": "npm run build",
+    "deploy": "npm run deploy:docker",
+    "deploy:docker": "docker push asia.gcr.io/hancomac/api"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",

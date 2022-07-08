@@ -1,5 +1,6 @@
 import express from 'express';
 import api from "./api";
+import auth from "./auth";
 import prepare from "./util/prepare";
 
 declare const config: { version: string, commitHash: string, commitCount: number, buildDate: string };
@@ -9,6 +10,8 @@ export default function ({port} = {port: 80}) {
         const app = express();
 
         prepare(app);
+
+        app.use(auth);
 
         app.use('/', api());
 

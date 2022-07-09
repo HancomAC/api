@@ -1,4 +1,4 @@
-import Datastore, {DSKey} from "$gcp/datastore";
+import Datastore, {DSKey} from "$util/gcp/datastore";
 import Resp from "$types/response";
 import {Submission} from "$types/submission";
 

@@ -3,6 +3,7 @@ import process from "process";
 import {cpus} from "os";
 import app from "./app";
 import log, {error} from "./util/log";
+import '$util/env'
 
 declare const config: { version: string, commitHash: string, commitCount: number, buildDate: string, port: number, dev: boolean };
 

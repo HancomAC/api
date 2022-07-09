@@ -1,5 +1,5 @@
 import {Storage} from "@google-cloud/storage";
-import {projectId} from "$gcp/config";
+import {projectId} from "$util/gcp/config";
 
 const client = new Storage({projectId});
 

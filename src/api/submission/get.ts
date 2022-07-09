@@ -1,4 +1,4 @@
-import Storage, {SubmissionBucket} from "$gcp/storage";
+import Storage, {SubmissionBucket} from "$util/gcp/storage";
 import Resp from "$types/response";
 import {SubmissionRecord} from "$types/submission";
 

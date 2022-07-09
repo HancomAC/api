@@ -1,8 +1,10 @@
 import Auth from "$types/auth";
 
-declare namespace Express {
-    interface Request {
-        auth?: Auth;
+declare global {
+    namespace Express {
+        interface Request {
+            auth?: Auth;
+        }
     }
 }
 

@@ -9,5 +9,9 @@ export function sign(data, expire) {
 }
 
 export function verify(token) {
-    return jwt.verify(token, secretKey);
+    try {
+        return jwt.verify(token, secretKey);
+    } catch (e) {
+        return null;
+    }
 }

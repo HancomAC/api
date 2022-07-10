@@ -8,9 +8,9 @@
   "private": true,
   "scripts": {
     "dev": "node esbuild.js --dev",
-    "build": "npm run build:ts npm run build:docker",
+    "build": "npm run build:ts && npm run build:docker",
     "build:ts": "node esbuild.js",
-    "build:docker": "docker build -t asia.gcr.io/hancomac/api .",
+    "build:docker": "docker build --platform linux/amd64 -t asia.gcr.io/hancomac/api .",
     "prestart": "npm run build",
     "start": "node build/index.js",
     "predeploy": "npm run build",

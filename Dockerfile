@@ -1,9 +1,10 @@
 FROM node:18-alpine
 
-COPY build/index.js /HAC/build/index.js
+RUN npm install pnpm -g
 COPY .dockerignore .gitignore package.json pnpm-lock.yaml tsconfig.json /HAC/
 WORKDIR /HAC
-RUN npm install pnpm -g
 RUN pnpm install
+COPY build/index.js /HAC/build/index.js
 
-ENTRYPOINT ["node", "/HAC/index.js"]
+
+ENTRYPOINT ["node", "/HAC/build/index.js"]

@@ -24,7 +24,7 @@ require('esbuild').build({
         'config.commitHash': `"${childProcess.execSync('git rev-parse HEAD').toString().trim()}"`,
         'config.commitCount': `${childProcess.execSync('git rev-list --count HEAD').toString().trim()}`,
         'config.buildDate': `"${new Date().toISOString()}"`,
-        'config.port': '3005',
+        'config.port': args.dev ? '3005' : '80',
         'config.dev': `${args.dev}`,
     },
     ...(args.dev ? {

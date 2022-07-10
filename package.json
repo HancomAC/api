@@ -10,12 +10,12 @@
     "dev": "node esbuild.js --dev",
     "build": "npm run build:ts && npm run build:docker",
     "build:ts": "node esbuild.js",
-    "build:docker": "docker build --platform linux/amd64 -t asia.gcr.io/hancomac/api .",
+    "build:docker": "docker build --platform linux/amd64 -t asia.gcr.io/hancomac/api:stable -t asia.gcr.io/hancomac/api:dev .",
     "prestart": "npm run build",
     "start": "node build/index.js",
     "predeploy": "npm run build",
     "deploy": "npm run deploy:docker",
-    "deploy:docker": "docker push asia.gcr.io/hancomac/api"
+    "deploy:docker": "docker push asia.gcr.io/hancomac/api:dev"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
